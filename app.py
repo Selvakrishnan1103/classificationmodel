@@ -12,8 +12,7 @@ from keras.applications.resnet50 import ResNet50, preprocess_input
 from keras.preprocessing import image
 
 app = Flask(__name__)
-CORS(app, origins=["https://eduhush.vercel.app"])
-
+CORS(app, resources={r"/*": {"origins": "*"}})
 # Load ML model and feature extractor
 classification_model = joblib.load('classification_visual_only.pkl')
 resnet_model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
